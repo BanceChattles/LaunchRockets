@@ -4,49 +4,17 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Launch Rockets</title>
     
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
 </head>
 <body>
-    <button type="button" onclick="aFunction()">First 5 Launches</button>
-    <div id="hide">
-        <p id="OneFive"></p>
-        <p id="TwoFive"></p>
-        <p id="ThreeFive"></p>
-        <p id="FourFive"></p>
-        <p id="FiveFive"></p>
-    </div>
-    <script>
-        //create an ajax object
-        var httpRequest = new XMLHttpRequest();
-
-        // create the stream
-        httpRequest.open("get", "https://launchlibrary.net/1.4/launch?next=5");
-        httpRequest.send();
-
-        httpRequest.onreadystatechange = aFunction;
-
-        function aFunction(){
-            if(httpRequest.readyState == 4 && httpRequest.status == 200){
-                
-                var x = document.getElementById("hide");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-
-                var jsObject = JSON.parse(httpRequest.responseText);
-                console.log(jsObject);
-                document.getElementById("OneFive").innerHTML = jsObject.launches[0].name;
-                document.getElementById("TwoFive").innerHTML = jsObject.launches[1].name;
-                document.getElementById("ThreeFive").innerHTML = jsObject.launches[2].name;
-                document.getElementById("FourFive").innerHTML = jsObject.launches[3].name;
-                document.getElementById("FiveFive").innerHTML = jsObject.launches[4].name;
-                
-            }
-        }
-
-    </script>
+    <h1 id="heading">Aloha!</h1>
+    <p>I am the text of which you should touch</p>
+    <button class="hide">Hide</button>
+    <button class="show">Show</button>
+    <button class="toggle">Toggle</button>
+    <script src="app.js"></script>
+    
 </body>
 </html>
