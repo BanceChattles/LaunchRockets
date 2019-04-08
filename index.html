@@ -8,12 +8,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <button type="button" class="toggle" onclick="aFunction()">First 5 Launches</button>
+    
+    <button type="button" class="toggle" onclick="nFunction()">First 5 Launches</button>
         <p id="OneFive"></p>
         <p id="TwoFive"></p>
         <p id="ThreeFive"></p>
         <p id="FourFive"></p>
         <p id="FiveFive"></p>
+
+    <button type="button" class="toggle" onclick="fFunction()">Next 5 Falcon Launches</button>
+        <p id="fOne"></p>
+        <p id="fTwo"></p>
+        <p id="fThree"></p>
+        <p id="fFour"></p>
+        <p id="fFive"></p>
+    <button type="button" class="toggle" onclick="aFunction()">Next 5 Ariane Launches</button>
+        <p id="aOne"></p>
+        <p id="aTwo"></p>
+        <p id="aThree"></p>
+        <p id="aFour"></p>
+        <p id="aFive"></p>
     <script>
         //create an ajax object
         var httpRequest = new XMLHttpRequest();
@@ -22,12 +36,11 @@
         httpRequest.open("get", "https://launchlibrary.net/1.4/launch?next=5");
         httpRequest.send();
 
-        httpRequest.onreadystatechange = aFunction;
+        httpRequest.onreadystatechange = nFunction;
 
-        function aFunction(){
+        function nFunction(){
             if(httpRequest.readyState == 4 && httpRequest.status == 200){
                 
-
                 var jsObject = JSON.parse(httpRequest.responseText);
                 console.log(jsObject);
                 document.getElementById("OneFive").innerHTML = jsObject.launches[0].name;
@@ -35,6 +48,40 @@
                 document.getElementById("ThreeFive").innerHTML = jsObject.launches[2].name;
                 document.getElementById("FourFive").innerHTML = jsObject.launches[3].name;
                 document.getElementById("FiveFive").innerHTML = jsObject.launches[4].name;
+                
+            }
+        }
+        var falconRequest = new XMLHttpRequest();
+        falconRequest.open("get", "https://launchlibrary.net/1.4/launch?name=falcon");
+        falconRequest.send();
+        falconRequest.onreadystatechange = fFunction;
+        function fFunction(){
+            if(falconRequest.readyState == 4 && falconRequest.status == 200){
+                
+                var jsObject = JSON.parse(falconRequest.responseText);
+                console.log(jsObject);
+                document.getElementById("fOne").innerHTML = jsObject.launches[0].name;
+                document.getElementById("fTwo").innerHTML = jsObject.launches[1].name;
+                document.getElementById("fThree").innerHTML = jsObject.launches[2].name;
+                document.getElementById("fFour").innerHTML = jsObject.launches[3].name;
+                document.getElementById("fFive").innerHTML = jsObject.launches[4].name;
+                
+            }
+        }
+        var arianeRequest = new XMLHttpRequest();
+        arianeRequest.open("get", "https://launchlibrary.net/1.4/launch?name=ariane");
+        arianeRequest.send();
+        arianeRequest.onreadystatechange = aFunction;
+        function aFunction(){
+            if(arianeRequest.readyState == 4 && arianeRequest.status == 200){
+                
+                var jsObject = JSON.parse(arianeRequest.responseText);
+                console.log(jsObject);
+                document.getElementById("aOne").innerHTML = jsObject.launches[0].name;
+                document.getElementById("aTwo").innerHTML = jsObject.launches[1].name;
+                document.getElementById("aThree").innerHTML = jsObject.launches[2].name;
+                document.getElementById("aFour").innerHTML = jsObject.launches[3].name;
+                document.getElementById("aFive").innerHTML = jsObject.launches[4].name;
                 
             }
         }
