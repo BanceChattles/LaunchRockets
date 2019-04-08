@@ -11,10 +11,15 @@
     
     <button type="button" class="toggle" onclick="nFunction()">First 5 Launches</button>
         <p id="OneFive"></p>
+        <p id="DateOne"></p>
         <p id="TwoFive"></p>
+        <p id="DateTwo"></p>
         <p id="ThreeFive"></p>
+        <p id="DateThree"></p>
         <p id="FourFive"></p>
+        <p id="DateFour"></p>
         <p id="FiveFive"></p>
+        <p id="DateFive"></p>
     <!-- Button above toggles the other two on when it goes off and vice-versa -->
     <button type="button" class="toggle" onclick="fFunction()">Next 5 Falcon Launches</button>
         <p class="hide" id="fOne"></p>
@@ -44,10 +49,15 @@
                 var jsObject = JSON.parse(httpRequest.responseText);
                 console.log(jsObject);
                 document.getElementById("OneFive").innerHTML = jsObject.launches[0].name;
+                document.getElementById("DateOne").innerHTML = jsObject.launches[0].net;
                 document.getElementById("TwoFive").innerHTML = jsObject.launches[1].name;
+                document.getElementById("DateTwo").innerHTML = jsObject.launches[1].net;
                 document.getElementById("ThreeFive").innerHTML = jsObject.launches[2].name;
+                document.getElementById("DateThree").innerHTML = jsObject.launches[2].net;
                 document.getElementById("FourFive").innerHTML = jsObject.launches[3].name;
+                document.getElementById("DateFour").innerHTML = jsObject.launches[3].net;
                 document.getElementById("FiveFive").innerHTML = jsObject.launches[4].name;
+                document.getElementById("DateFive").innerHTML = jsObject.launches[4].net;
                 
             }
         }
